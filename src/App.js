@@ -20,11 +20,10 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-          <Numbers />
+          <Numbers data={this.state.data} />
           <Chart />
           <Table />
           <button onClick={()=>{console.log(this.state)}}>WOW</button>
-          {/* <h1>{this.state}</h1> */}
         </div>
     )
   }
