@@ -22,9 +22,7 @@ export default class App extends Component {
       <div className="App">
           <Numbers data={this.state.data} />
           <Chart />
-          <Table />
-          <button onClick={()=>{console.log(this.state)}}>WOW</button>
-        </div>
+      </div>
     )
   }
 }

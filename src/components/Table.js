@@ -7,13 +7,10 @@ export const Table = () => {
                 <thead>
                     <tr>
                         <td>Date</td>
-                        <td>Date</td>
-                        <td>Date</td>
-                        <td>Date</td>
+                        <td>Cases</td>
+                        <td>Deaths</td>
+                        <td>Recovered</td>
                     </tr>
-                    {/* <th>Cases</th>
-                    <th>Deaths</th>
-                    <th>Recovered</th> */}
                 </thead>
                 <tbody>
                     <tr>
