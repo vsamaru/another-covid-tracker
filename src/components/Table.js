@@ -5,10 +5,15 @@ export const Table = () => {
         <div>
             <table>
                 <thead>
-                    <th>Date</th>
-                    <th>Cases</th>
+                    <tr>
+                        <td>Date</td>
+                        <td>Date</td>
+                        <td>Date</td>
+                        <td>Date</td>
+                    </tr>
+                    {/* <th>Cases</th>
                     <th>Deaths</th>
-                    <th>Recovered</th>
+                    <th>Recovered</th> */}
                 </thead>
                 <tbody>
                     <tr>
