@@ -1,38 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react'
 import './App.css';
 
 import Numbers from './components/Numbers'
 import Chart from './components/Chart'
 import Table from './components/Table'
 
-function App() {
-  getGlobalFigures()
-  getGlobalHistory()
-  return (
-    <div className="App">
-      <Numbers />
-      <Chart />
-      <Table />
-    </div>
-  );
-}
+import { getGlobalFigures, getGlobalHistory } from './ExtarnalSources'
 
-const numbersUrl = "https://corona.lmao.ninja/v2/all";
-const globalDataUrl = 'https://covidapi.info/api/v1/global/count'
-
-async function getGlobalFigures() {
-  await fetch(numbersUrl)
-  .then(response => response.json())
-  .then(data => {
-      console.log(data);
-  })
+export default class App extends Component {
+  state = {
+    data: {},
+    history: {}
+  }
+  async componentDidMount() {
+    const data = await getGlobalFigures();
+    const history = await getGlobalHistory();
+    this.setState({ data, history });
+  }
+  render() {
+    return (
+      <div className="App">
+          <Numbers />
+          <Chart />
+          <Table />
+          <button onClick={()=>{console.log(this.state)}}>WOW</button>
+          {/* <h1>{this.state}</h1> */}
+        </div>
+    )
+  }
 }
-async function getGlobalHistory() {
-  fetch(globalDataUrl)
-  .then(response => response.json())
-  .then(data => {
-      console.log(data)
-  })
-}
-
-export default App;
