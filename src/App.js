@@ -6,7 +6,7 @@ import Numbers from './components/Numbers'
 import Chart from './components/Chart'
 import Table from './components/Table'
 
-import { getGlobalFigures, getGlobalHistory } from './ExtarnalSources'
+import { getGlobalFigures, getGlobalHistory, getCountryFigures, getCountryHistory } from './ExtarnalSources'
 
 export default class App extends Component {
   state = {
@@ -18,12 +18,23 @@ export default class App extends Component {
     const history = await getGlobalHistory();
     this.setState({ data, history });
   }
+
+  CountryChanged = async (country) => {
+    if (country != "Global") {
+    const countryFigures = await getCountryFigures(country);
+    const countryHistory = await getCountryHistory(country);
+    this.setState({ data: countryFigures, history: countryHistory });
+    } else {
+      this.componentDidMount();
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <CountrySelect />
+        <CountrySelect CountryChanged={this.CountryChanged} />
           <Numbers data={this.state.data} />
-          <Chart />
+          <Chart history={this.state.history} />
       </div>
     )
   }
