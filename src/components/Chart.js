@@ -1,29 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { getGlobalHistory } from '../ExtarnalSources.js';
 import './Chart.css'
-const Chart = () => {
-    const [history, setHistory] = useState({});
 
-    useEffect(() => {
-        const fetchHistory = async () => {
-            setHistory(await getGlobalHistory());
-        }
-        
-        fetchHistory()
-        
-        
-    }, []);
 
+const Chart = ({ history }) => {
+    
     const computeData = (type) => {
         var tempArray = []
         for (let [key, value] of Object.entries(history)) {
-            // console.log(key)
-            if (type == 'cases'){
+            if (type === 'cases'){
             tempArray.push(value.confirmed)
-            } else if (type == 'deaths'){
+            } else if (type === 'deaths'){
               tempArray.push(value.deaths)
-            } else if (type == 'recovered'){
+            } else if (type === 'recovered'){
                 tempArray.push(value.recovered)
               }
         }

@@ -31,9 +31,9 @@ export const getGlobalHistory = async () => {
 
 export const getCountryFigures = async (country) => {
   try {
-    const { data: { cases, deaths, recovered } } = await axios.get(countryNumbersUrl + country);
+    const { data: { cases, deaths, recovered, countryInfo } } = await axios.get(countryNumbersUrl + country);
 
-    return { cases, deaths, recovered };
+    return { cases, deaths, recovered, countryInfo };
   }
   catch (error) {
     return error;
@@ -42,9 +42,9 @@ export const getCountryFigures = async (country) => {
 
 export const getCountryHistory = async (country) => {
   try {
-    const { data: { result } } = await axios.get(countryNumbersUrl + country);
+    const { data: { result } } = await axios.get(countryHistoryUrl + country);
 
-    return { result };
+    return result;
   }
   catch (error) {
     return error;
