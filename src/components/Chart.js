@@ -18,7 +18,7 @@ const Chart = () => {
     const computeData = (type) => {
         var tempArray = []
         for (let [key, value] of Object.entries(history)) {
-            console.log(key)
+            // console.log(key)
             if (type == 'cases'){
             tempArray.push(value.confirmed)
             } else if (type == 'deaths'){

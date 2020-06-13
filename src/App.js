@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 
+import CountrySelect from './components/CountrySelect'
 import Numbers from './components/Numbers'
 import Chart from './components/Chart'
 import Table from './components/Table'
@@ -20,6 +21,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
+        <CountrySelect />
           <Numbers data={this.state.data} />
           <Chart />
       </div>
