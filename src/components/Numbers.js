@@ -4,35 +4,35 @@ import { Card, Typography, CardContent, Grid } from '@material-ui/core'
 import './Numbers.css'
 
 const Numbers = ({ data: { cases, deaths, recovered } }) => {
-    return (
+    if(cases) { 
+        return (
         <div>
             <Grid container spacing={2} justify="center">
                 <Grid item component={Card} className="card">
                     <CardContent>
                         <Typography >Cases</Typography>
-                        <Typography variant="h4">{ cases }</Typography>
+                        <Typography variant="h4">{ cases.toLocaleString('en') }</Typography>
                     </CardContent>
                 </Grid>
                 <Grid item component={Card} className="card">
                     <CardContent>
                         <Typography >Deaths</Typography>
-                        <Typography variant="h4">{ deaths }</Typography>
+                        <Typography variant="h4">{ deaths.toLocaleString('en') }</Typography>
                     </CardContent>
                 </Grid>
                 <Grid item component={Card} className="card">
                     <CardContent>
                         <Typography >Recoverd</Typography>
-                        <Typography variant="h4">{ recovered }</Typography>
+                        <Typography variant="h4">{ recovered.toLocaleString('en') }</Typography>
                     </CardContent>
                 </Grid>
             </Grid>
         </div>
-        // <div>
-        //     <h1>Cases</h1>
-        //     <h1>Deaths</h1>
-        //     <h1>Recoverd</h1>
-        // </div>
-    )
+        )}
+        else {
+            return <div>Loading</div>
+        }
+    
 }
 
 export default Numbers

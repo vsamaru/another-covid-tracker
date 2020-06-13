@@ -4,7 +4,6 @@ import './App.css';
 import CountrySelect from './components/CountrySelect'
 import Numbers from './components/Numbers'
 import Chart from './components/Chart'
-import Table from './components/Table'
 
 import { getGlobalFigures, getGlobalHistory, getCountryFigures, getCountryHistory } from './ExtarnalSources'
 
@@ -20,9 +19,9 @@ export default class App extends Component {
   }
 
   CountryChanged = async (country) => {
-    if (country != "Global") {
+    if (country !== "Global") {
     const countryFigures = await getCountryFigures(country);
-    const countryHistory = await getCountryHistory(country);
+    const countryHistory = await getCountryHistory(countryFigures.countryInfo.iso3);
     this.setState({ data: countryFigures, history: countryHistory });
     } else {
       this.componentDidMount();
