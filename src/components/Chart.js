@@ -4,7 +4,6 @@ import './Chart.css'
 
 
 const Chart = ({ history }) => {
-    
     const computeData = (type) => {
         var tempArray = []
         for (let [key, value] of Object.entries(history)) {
@@ -43,11 +42,15 @@ const Chart = ({ history }) => {
     )
 
 
-    return (
-        <div className="chartContainer">
-            {lineChart}
-        </div>
-    )
+    if (history) {
+        return (
+            <div className="chartContainer">
+                {lineChart}
+            </div>
+        )
+    } else {
+        return <h2>No History Availaible</h2>
+    }
 }
 
 export default Chart;

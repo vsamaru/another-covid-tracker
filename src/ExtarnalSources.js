@@ -47,7 +47,8 @@ export const getCountryHistory = async (country) => {
     return result;
   }
   catch (error) {
-    return error;
+    console.log(error.message)
+    return null;
   }
 };
 
